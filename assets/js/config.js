@@ -57,24 +57,11 @@ const KONIS_CONFIG = {
   // - "link" : simple carte cliquable qui ouvre "link" dans un nouvel onglet
   news: [
     {
-      title: "Nouveau mix — Summer Session 2026",
-      date: "2026-08-15",
-      type: "soundcloud",
-      embedUrl: "", // ex: https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2FXXXXXXX
-      link: "https://soundcloud.com/konis"
-    },
-    {
-      title: "Live @ Club Neon — Aftermovie",
-      date: "2026-07-02",
+      title: "Nouveau mix", // remplace par le vrai titre de la vidéo si besoin
+      date: "2026-09-05",
       type: "youtube",
-      embedUrl: "", // ex: https://www.youtube.com/embed/XXXXXXXXXXX
-      link: "https://youtube.com/@konis"
-    },
-    {
-      title: "Prochaine date : Festival Lumière",
-      date: "2026-09-20",
-      type: "link",
-      link: "https://konis.fr"
+      embedUrl: "https://www.youtube.com/embed/OB9AEn5ogAk",
+      link: "https://youtu.be/OB9AEn5ogAk"
     }
   ]
 };
