@@ -182,7 +182,8 @@ body {
   gap: 14px;
 }
 
-.news-card {
+.news-card,
+.playlist-card {
   display: block;
   border-radius: var(--radius);
   background: var(--card);
@@ -193,7 +194,8 @@ body {
   -webkit-tap-highlight-color: transparent;
   transition: transform 0.15s ease, background 0.15s ease;
 }
-.news-card:active { transform: scale(0.98); }
+.news-card:active,
+.playlist-card:active { transform: scale(0.98); }
 
 .news-card-body {
   display: flex;

@@ -31,15 +31,21 @@ const KONIS_CONFIG = {
   },
 
   // ---------- Réseaux sociaux ----------
-  // icon disponibles : instagram, tiktok, youtube, soundcloud, spotify,
-  // facebook, whatsapp, snapchat, twitter, twitch, link
+  // icon disponibles : instagram, tiktok, youtube, soundcloud, mixcloud,
+  // spotify, facebook, whatsapp, snapchat, twitter, twitch, link
   socials: [
-    { name: "Instagram",  url: "https://instagram.com/konis",              icon: "instagram" },
-    { name: "TikTok",     url: "https://tiktok.com/@konis",                icon: "tiktok" },
-    { name: "YouTube",    url: "https://youtube.com/@konis",               icon: "youtube" },
-    { name: "SoundCloud", url: "https://soundcloud.com/konis",             icon: "soundcloud" },
-    { name: "Spotify",    url: "https://open.spotify.com/artist/xxxxxxx",  icon: "spotify" },
-    { name: "WhatsApp",   url: "https://wa.me/33600000000",                icon: "whatsapp" }
+    { name: "Instagram", url: "https://instagram.com/konismusic",        icon: "instagram" },
+    { name: "YouTube",   url: "https://www.youtube.com/@konismusic",     icon: "youtube" },
+    { name: "Mixcloud",  url: "https://www.mixcloud.com/KONISmusic/",    icon: "mixcloud" }
+    // Ajoute ici une ligne SoundCloud si besoin, ex :
+    // { name: "SoundCloud", url: "https://soundcloud.com/...", icon: "soundcloud" }
+  ],
+
+  // ---------- Playlists Spotify ----------
+  // Ajoute une entrée par playlist (nom + lien). La section ne s'affiche
+  // que si cette liste contient au moins une playlist.
+  spotifyPlaylists: [
+    // { name: "Ma playlist", url: "https://open.spotify.com/playlist/xxxxxxx" }
   ],
 
   // ---------- Actualités / derniers mixes ----------

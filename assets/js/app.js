@@ -6,6 +6,7 @@
     tiktok: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 2c.3 2 1.7 3.6 3.8 3.9v3a7 7 0 0 1-3.8-1.2v6.8a5.8 5.8 0 1 1-5.8-5.8c.3 0 .6 0 .9.1v3.1a2.7 2.7 0 1 0 1.9 2.6V2h3z"/></svg>',
     youtube: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.5l5 2.5-5 2.5z" fill="currentColor" stroke="none"/></svg>',
     soundcloud: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12v4M6 10v6M9 8v8M12 9v7M15 6a4 4 0 0 1 4 4v6M15 10v6"/><path d="M19 12a3 3 0 0 1 0 6H15"/></svg>',
+    mixcloud: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="12" r="3.2"/><circle cx="17" cy="12" r="3.2"/><path d="M10.2 12h3.6"/></svg>',
     spotify: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M7 10.5c3-1 7-.6 9.5 1M7.5 13.5c2.5-.8 5.8-.5 8 .8M8 16.3c2-.6 4.6-.4 6.3.7"/></svg>',
     facebook: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9h3V6h-3a3 3 0 0 0-3 3v2H9v3h2v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"/></svg>',
     whatsapp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2z"/><path d="M8.5 8.7c.2-.5.5-.5.8-.5h.6c.2 0 .4 0 .6.5.2.5.7 1.6.7 1.8.1.1.1.3 0 .4-.1.2-.2.3-.3.5-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.6-.1l.6-.8c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.2.4.4 0 .2 0 1-.5 1.7-.5.7-1.6 1.1-2.4 1.1-.8 0-1.8-.3-4-1.4-2.7-1.4-4.4-4.1-4.6-4.3-.1-.2-1-1.3-1-2.6 0-1.2.6-1.8.9-2.1z" fill="currentColor" stroke="none"/></svg>',
@@ -75,6 +76,34 @@
       );
     }).join("");
     grid.innerHTML = html;
+  }
+
+  // ---------- Playlists Spotify ----------
+  function renderSpotifyPlaylists() {
+    var section = document.getElementById("spotify-section");
+    var list = document.getElementById("spotify-list");
+    if (!section || !list) return;
+
+    var playlists = KONIS_CONFIG.spotifyPlaylists || [];
+    if (!playlists.length) {
+      section.hidden = true;
+      return;
+    }
+
+    section.hidden = false;
+    list.innerHTML = playlists.map(function (p) {
+      return (
+        '<a class="playlist-card" href="' + escapeHtml(p.url) + '" target="_blank" rel="noopener noreferrer">' +
+          '<div class="news-card-body">' +
+            '<div class="news-thumb"><span class="icon">' + ICONS.spotify + "</span></div>" +
+            '<div class="news-text">' +
+              '<p class="news-title">' + escapeHtml(p.name) + "</p>" +
+              '<p class="news-meta"><span class="news-tag">Spotify</span>Playlist</p>' +
+            "</div>" +
+          "</div>" +
+        "</a>"
+      );
+    }).join("");
   }
 
   // ---------- Actualités / mixes ----------
@@ -157,6 +186,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     renderProfile();
     renderSocials();
+    renderSpotifyPlaylists();
     renderNews();
     initContactButton();
     setYear();
