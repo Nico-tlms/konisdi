@@ -16,7 +16,7 @@ const KONIS_CONFIG = {
     name: "KONIS",
     role: "DJ / Live Mixes",
     bio: "Musique électronique • Mixes • Événements",
-    avatar: "assets/img/avatar.svg" // remplace par le chemin de ta photo, ex: "assets/img/moi.jpg"
+    avatar: "assets/img/logo-konis.png" // logo KONIS (blanc, fond transparent)
   },
 
   // ---------- Infos utilisées pour la fiche de contact (vCard) ----------
