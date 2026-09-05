@@ -34,18 +34,20 @@ const KONIS_CONFIG = {
   // icon disponibles : instagram, tiktok, youtube, soundcloud, mixcloud,
   // spotify, facebook, whatsapp, snapchat, twitter, twitch, link
   socials: [
-    { name: "Instagram", url: "https://instagram.com/konismusic",        icon: "instagram" },
-    { name: "YouTube",   url: "https://www.youtube.com/@konismusic",     icon: "youtube" },
-    { name: "Mixcloud",  url: "https://www.mixcloud.com/KONISmusic/",    icon: "mixcloud" }
-    // Ajoute ici une ligne SoundCloud si besoin, ex :
-    // { name: "SoundCloud", url: "https://soundcloud.com/...", icon: "soundcloud" }
+    { name: "Instagram",  url: "https://instagram.com/konismusic",        icon: "instagram" },
+    { name: "YouTube",    url: "https://www.youtube.com/@konismusic",     icon: "youtube" },
+    { name: "Mixcloud",   url: "https://www.mixcloud.com/KONISmusic/",    icon: "mixcloud" },
+    { name: "SoundCloud", url: "https://soundcloud.com/konisoff",         icon: "soundcloud" }
   ],
 
   // ---------- Playlists Spotify ----------
   // Ajoute une entrée par playlist (nom + lien). La section ne s'affiche
   // que si cette liste contient au moins une playlist.
   spotifyPlaylists: [
-    // { name: "Ma playlist", url: "https://open.spotify.com/playlist/xxxxxxx" }
+    { name: "KONIS - MUSIC FOR LIFE",      url: "https://open.spotify.com/playlist/5MCFXVVv5o6MWYA8TW3At7" },
+    { name: "KONIS - DEEP HOUSE",          url: "https://open.spotify.com/playlist/6Qvq2QuPjtnYRZLbt9KuUZ" },
+    { name: "KONIS - TECH HOUSE",          url: "https://open.spotify.com/playlist/2sRjWrbYuc8jHsLA2C2hst" },
+    { name: "KONIS - HOUSE UNDERGROUND",   url: "https://open.spotify.com/playlist/1u6rweJTZaHFCSX6nOQxUs" }
   ],
 
   // ---------- Actualités / derniers mixes ----------
