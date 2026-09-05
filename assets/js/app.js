@@ -32,7 +32,22 @@
   }
 
   // ---------- vCard (fiche de contact en un clic) ----------
-  function buildVCard(profile, contact, socials) {
+
+  // Découpe les lignes trop longues selon la norme vCard (RFC 6350) :
+  // 75 caractères par ligne, les lignes suivantes commencent par une espace.
+  function foldVCardLine(line) {
+    var maxLen = 75;
+    if (line.length <= maxLen) return line;
+    var result = line.slice(0, maxLen);
+    var rest = line.slice(maxLen);
+    while (rest.length > 0) {
+      result += "\r\n " + rest.slice(0, maxLen - 1);
+      rest = rest.slice(maxLen - 1);
+    }
+    return result;
+  }
+
+  function buildVCard(profile, contact, socials, photo) {
     var lines = [
       "BEGIN:VCARD",
       "VERSION:3.0",
@@ -44,6 +59,7 @@
     if (contact.phone) lines.push("TEL;TYPE=CELL:" + contact.phone);
     if (contact.email) lines.push("EMAIL:" + contact.email);
     if (contact.website) lines.push("URL:" + contact.website);
+    if (photo) lines.push(foldVCardLine("PHOTO;ENCODING=b;TYPE=" + photo.type + ":" + photo.base64));
     (socials || []).forEach(function (s) {
       if (s.url) lines.push("URL;TYPE=" + s.name.replace(/\s+/g, "") + ":" + s.url);
     });
@@ -51,12 +67,61 @@
     return lines.join("\r\n");
   }
 
+  function isIOS() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  }
+
+  function setContactHref(btn, vcard) {
+    if (btn._blobUrl) URL.revokeObjectURL(btn._blobUrl);
+
+    if (window.Blob && window.URL && URL.createObjectURL) {
+      var blobUrl = URL.createObjectURL(new Blob([vcard], { type: "text/vcard;charset=utf-8" }));
+      btn._blobUrl = blobUrl;
+      btn.setAttribute("href", blobUrl);
+      // iOS Safari shows the native "add contact" screen only when it can
+      // navigate directly to the vCard; the download attribute forces a
+      // plain file save instead, so it's only kept for other browsers.
+      if (isIOS()) {
+        btn.removeAttribute("download");
+      } else {
+        btn.setAttribute("download", "Konis.vcf");
+      }
+    } else {
+      btn.setAttribute("href", "data:text/vcard;charset=utf-8," + encodeURIComponent(vcard));
+    }
+  }
+
+  function loadPhotoBase64(url) {
+    return fetch(url)
+      .then(function (res) { return res.blob(); })
+      .then(function (blob) {
+        return new Promise(function (resolve, reject) {
+          var reader = new FileReader();
+          reader.onload = function () {
+            var match = /^data:(.*?);base64,(.*)$/.exec(reader.result || "");
+            if (!match) { reject(new Error("Format d'image inattendu")); return; }
+            resolve({ type: match[1].split("/")[1].toUpperCase(), base64: match[2] });
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        });
+      });
+  }
+
   function initContactButton() {
     var btn = document.getElementById("add-contact-btn");
     if (!btn) return;
-    var vcard = buildVCard(KONIS_CONFIG.profile, KONIS_CONFIG.contact, KONIS_CONFIG.socials);
-    var dataUri = "data:text/vcard;charset=utf-8," + encodeURIComponent(vcard);
-    btn.setAttribute("href", dataUri);
+
+    setContactHref(btn, buildVCard(KONIS_CONFIG.profile, KONIS_CONFIG.contact, KONIS_CONFIG.socials));
+
+    if (KONIS_CONFIG.contact.photo) {
+      loadPhotoBase64(KONIS_CONFIG.contact.photo).then(function (photo) {
+        setContactHref(btn, buildVCard(KONIS_CONFIG.profile, KONIS_CONFIG.contact, KONIS_CONFIG.socials, photo));
+      }).catch(function () {
+        // La fiche reste utilisable sans photo si le chargement échoue.
+      });
+    }
+
     btn.addEventListener("click", function () {
       showToast("Ouverture de la fiche contact…");
     });

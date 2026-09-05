@@ -25,9 +25,10 @@ const KONIS_CONFIG = {
     lastName: "",
     organization: "KONIS",
     role: "DJ / Artiste",
-    phone: "+33600000000",       // remplace par ton numéro
-    email: "contact@konis.fr",   // remplace par ton email
-    website: "https://konis.fr"  // remplace par le lien de cette page une fois en ligne
+    phone: "+33642398533",
+    email: "contact@konis.fr",   // remplace par ton email si besoin
+    website: "https://konis.fr", // remplace par le lien de cette page une fois en ligne
+    photo: "assets/img/logo-konis-contact.jpg" // photo intégrée dans la fiche contact
   },
 
   // ---------- Réseaux sociaux ----------
