@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>KONIS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="description" content="KONIS — DJ & mixes. Ajoutez-moi à vos contacts, suivez-moi sur les réseaux et écoutez mes derniers mixes.">
+<meta name="theme-color" content="#0b0714">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/favicon.svg">
+
+<!-- Open Graph / partage -->
+<meta property="og:title" content="KONIS">
+<meta property="og:description" content="DJ & mixes — ajoutez-moi à vos contacts et suivez mon actu.">
+<meta property="og:type" content="profile">
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="bg-glow" aria-hidden="true"></div>
+
+<main class="page">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="avatar-wrap">
+      <img class="avatar" id="avatar" src="assets/img/avatar.svg" alt="Photo de KONIS">
+    </div>
+    <h1 class="name" id="profile-name">KONIS</h1>
+    <p class="role" id="profile-role">DJ / Live Mixes</p>
+    <p class="bio" id="profile-bio">Musique électronique • Mixes • Événements</p>
+
+    <a href="#" id="add-contact-btn" class="btn-primary" download="Konis.vcf">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+      <span>Ajouter à mes contacts</span>
+    </a>
+  </section>
+
+  <!-- RESEAUX SOCIAUX -->
+  <section class="section">
+    <h2 class="section-title">Suivez-moi</h2>
+    <div class="social-grid" id="social-grid"></div>
+  </section>
+
+  <!-- ACTUALITES / MIXES -->
+  <section class="section">
+    <h2 class="section-title">Dernières actus & mixes</h2>
+    <div class="news-list" id="news-list"></div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> KONIS. Tous droits réservés.</p>
+  </footer>
+
+</main>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
