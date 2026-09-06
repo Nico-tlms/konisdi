@@ -14,8 +14,7 @@ const KONIS_CONFIG = {
   // ---------- Profil affiché en haut de page ----------
   profile: {
     name: "KONIS",
-    role: "DJ / Live Mixes",
-    bio: "Musique électronique • Mixes • Événements",
+    role: "Dance - House - Techno",
     avatar: "assets/img/logo-konis.png" // logo KONIS (blanc, fond transparent)
   },
 

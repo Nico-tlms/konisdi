@@ -96,11 +96,19 @@ body {
 }
 
 .bio {
+  display: inline-block;
   margin: 6px 0 20px;
   color: var(--text-dim);
   font-size: 0.95rem;
   max-width: 320px;
 }
+
+.bio-mail {
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.15s ease;
+}
+.bio-mail:active { color: var(--accent-3); }
 
 /* ---------- Buttons ---------- */
 .btn-primary {

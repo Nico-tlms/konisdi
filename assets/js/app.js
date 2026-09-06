@@ -213,11 +213,14 @@
     var p = KONIS_CONFIG.profile;
     var nameEl = document.getElementById("profile-name");
     var roleEl = document.getElementById("profile-role");
-    var bioEl = document.getElementById("profile-bio");
+    var mailEl = document.getElementById("profile-mail");
     var avatarEl = document.getElementById("avatar");
     if (nameEl) nameEl.textContent = p.name;
     if (roleEl) roleEl.textContent = p.role;
-    if (bioEl) bioEl.textContent = p.bio;
+    if (mailEl && KONIS_CONFIG.contact.email) {
+      mailEl.href = "mailto:" + KONIS_CONFIG.contact.email;
+      mailEl.textContent = KONIS_CONFIG.contact.email;
+    }
     if (avatarEl && p.avatar) {
       avatarEl.src = p.avatar;
       avatarEl.alt = "Photo de " + p.name;
